@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Save Web Form Data to Spreadsheets - Contact Form</title>
+<script
+ src="https://code.jquery.com/jquery-3.4.1.js"
+ integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+ crossorigin="anonymous"></script>
+<script>
+function SubForm (){
+   $.ajax({
+       url:'https://api.apispreadsheets.com/data/6637/',
+       type:'post',
+       data:$("#myForm").serializeArray(),
+       success: function(){
+         alert("Form Data Submitted :)")
+       },
+       error: function(){
+         alert("There was an error :(")
+       }
+   });
+}
+</script>
+<style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    /* Dashed border */
+    hr.dashed {
+      border-top: 3px dashed rgb(97, 120, 161);
+    }
+    
+    /* Dotted border */
+    hr.dotted {
+      border-top: 3px dotted rgb(255, 255, 255);
+    }
+    
+    /* Solid border */
+    hr.solid {
+      border-top: 3px solid rgb(255, 255, 255);
+    }
+    
+    /* Rounded border */
+    hr.rounded {
+      border-top: 8px solid rgb(255, 255, 255);
+      border-radius: 5px;
+    }
+    
+    div.box {
+        width: 320px;
+        padding: 10px;
+        border: 5px solid gray;
+        margin: 0;
+    }
+    .button {
+        background-color: #ffffff; /* Green */
+        border: none;
+        color: rgb(0, 0, 0);
+        padding: 15px 60px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        font-family: 'Courier New';
+    }
+    </style>
+</head>
+
+<body style="background-color:rgb(192, 223, 228);" >
+    <div style="background-color:#ffffff">
+        <p><br></p>
+    </div>
+    <div style="background-color:#ffffff">
+        <p style="line-height: 0.3"><br></p>
+        <img src="logo.png" alt="Hackdavis_Logo" style="float:left" width = "200" height = "80">
+        <img src="logo.png" alt="Hackdavis_Logo" style="float:right;" width = "200" height = "80">
+        <h1 style="text-align:center;" style="font-family:verdana" style="color:rgb(0, 0, 0)" style="line-height: 0.5;">R<sub>ATE </sub>M<sub>Y </sub>C<sub>LUBS</sub></h1>
+        <hr class="dashed">
+        <p style="text-align:center;">¤ ¤ ¤ ¤ ¤ ¤ ¤ ¤ ¤ ¤ Helping you get involved and maximize your college experience ¤ ¤ ¤ ¤ ¤ ¤ ¤ ¤ ¤ ¤</p>
+        <p style="line-height: 0.3"><br></p>
+    </div>
+    <div style="background-color:#ffffff">
+        <p><br></p>
+    </div>
+
+    <div class = "Header">
+      <h1> Most Popular Clubs </h1>
+    </div>
+    
+    
+    <div style = "text-align: center;" style ="padding: 35px;" >
+      
+        <a href="Moneyball-Club.html"><button class="button">Moneyball Club</button></a>
+        <a href="Football_Club.html"><button class="button">Football Club</button></a>
+        <a href="Friends_Club.html"><button class="button">Friends Club</button></a>
+        <a href="Exercise_Club.html"><button class="button">Exercise Club</button></a>
+
+    </div>
+     
+  <div style="background-color:#ffffff">
+    <p><br></p>
+  </div>
+
+  <div class = "Header">
+    <h1> Fill out a Form!</h1>
+    <style>
+      h1{
+        text-align: center;
+      }
+    </style>
+  </div>
+
+  <div style="background-color:#ffffff">
+    <p><br></p>
+  </div>
+
+  <form id="myForm" style="margin:35px;">
+
+   <label style="font-size:20px"  >¤ Club Name ¤</label>
+   <hr class="dotted">
+   <br/>
+   <input name="club_name" />
+   <br/><br/><br/>
+
+   <label style="font-size:20px">¤ First Name ¤</label>
+   <hr class="dotted">
+   <br/>
+   <input name="first_name" />
+   <br/><br/><br/>
+
+   <label style="font-size:20px">¤ Last Name ¤</label>
+   <hr class="dotted">
+   <br/>
+   <input name="last_name" />
+   <br/><br/><br/>
+
+   <label style="font-size:20px">¤ Gender ¤</label>
+   <hr class="dotted">
+   <br/>
+   <input name="gender" />
+   <br/><br/><br/>
+
+   <label style="font-size:20px">¤ Email ¤</label>
+   <hr class="dotted">
+   <br/>
+   <input name="email" style="width: 300px;"/>
+   <br/><br/><br/>
+
+   <label style="font-size:20px">¤ Rating ¤</label>
+   <hr class="dotted">
+   <input type="radio" id="rating" name="rating" value="1" /> 1<br/>
+   <input type="radio" id="rating" name="rating" value="2" /> 2<br/>
+   <input type="radio" id="rating" name="rating" value="3" /> 3<br/>
+   <input type="radio" id="rating" name="rating" value="4" /> 4<br/>
+   <input type="radio" id="rating" name="rating" value="5" /> 5<br/>
+   <br/>
+
+   <label>Comments</label>
+   <br/>
+   <textarea name="comments">
+   </textarea>
+   <br/>
+
+ </form>
+ <button onclick="SubForm()" class="button" style="margin:35px;"><b>Submit</b></button>
+</body>
+</html>

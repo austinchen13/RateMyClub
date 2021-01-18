@@ -1,0 +1,68 @@
+---
+title: "Exercise Club Ratings"
+date: "`r Sys.Date()`"
+output: 
+  prettydoc::html_pretty:
+    theme: hpstr
+    highlight: github
+    toc: True
+---
+
+
+```{r include=FALSE}
+library(gsheet)
+data = gsheet2tbl('https://docs.google.com/spreadsheets/d/18J7MT4mBgdvfWq-jl4fJY4hRQ76y-XRZ5-7oV1bWX_Y/edit#gid=0')
+```
+
+
+
+
+```{r include=FALSE}
+attach(data)
+unique(club_name)[1]
+library(tidyverse)
+library(kableExtra)
+```
+
+
+
+```{r include=FALSE}
+clubs = c(unique(club_name))
+average_ratings = c()
+for (i in 1:length(clubs)){
+  average_ratings = append(average_ratings, rep(mean(rating[club_name == clubs[i]]), length(rating[club_name == clubs[i]])))
+}
+data$average_ratings_for_club = average_ratings
+```
+
+
+
+
+### List of Ratings and comments. 
+
+```{r include = FALSE}
+Exercise_Club_Ratings = data[club_name == "Exercise Club",]
+Exercise_Club_Ratings = Exercise_Club_Ratings[,c(1:7)]
+Exercise_Club_Ratings = data.frame(Exercise_Club_Ratings)
+Exercise_Club_Ratings_list = list(Exercise_Club_Ratings)
+attach(Exercise_Club_Ratings)
+Exercise_Club_Ratings$average_ratings = mean(rating)
+```
+
+```{r include=FALSE}
+avg_rating = unique(Exercise_Club_Ratings$average_ratings[club_name == "Exercise Club"])
+avg_rating
+```
+
+### Average Rating
+
+The average rating for the Exercise Club is `r avg_rating`.
+
+
+```{r echo=FALSE}
+Exercise_Club_Ratings_list %>% 
+  kable(caption = "List of Ratings") %>% 
+  kable_styling(latex_options = "scale_down", position = "center")
+```
+
+
