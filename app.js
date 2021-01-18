@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/views/index.html'))
+    res.sendFile('index.html')
 });
 app.listen(3000);
