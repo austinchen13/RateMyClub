@@ -1,6 +1,11 @@
-const express = require('express');
-const app = express();
+var express = require("express");
+var path = require('path');
+var app = express();
+
 app.get('/', function (req, res) {
-    res.sendFile('index.html')
+    res.sendFile(path.join(__dirname + '/index.html'))
+
 });
+
 app.listen(3000);
+console.log('Express server started');
