@@ -7,5 +7,9 @@ app.get('/', function (req, res) {
 
 });
 
+app.get('/HackDavis.JPG', function (req, res) {
+    res.sendFile(path.join(__dirname + '/HackDavis.JPG'))
+
+});
 app.listen(3000);
 console.log('Express server started');
